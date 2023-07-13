@@ -6,6 +6,7 @@ use Exception;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
+use Illuminate\Database\Query\Grammars\Grammar;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
@@ -414,7 +415,7 @@ class LivewireDatatable extends Component
                     if ($column->select instanceof Expression) {
                         $sep_string = config('database.default') === 'pgsql' ? '"' : '`';
 
-                        return new Expression($column->select->getValue() . ' AS ' . $sep_string . $column->name . $sep_string);
+                        return new Expression($column->select->getValue(new Grammar) . ' AS ' . $sep_string . $column->name . $sep_string);
                     }
 
                     if (is_array($column->select)) {
