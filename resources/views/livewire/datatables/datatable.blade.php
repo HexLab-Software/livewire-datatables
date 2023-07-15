@@ -119,7 +119,7 @@
                             @endforeach
                         </div>
                     @endunless
-                    <div class="table-row bg-blue-100 divide-x divide-blue-200">
+                    <div class="table-row bg-blue-100 divide-x divide-gray-200">
                         @foreach($this->columns as $index => $column)
                             @if($column['hidden'])
                                 @if($hideable === 'inline')
