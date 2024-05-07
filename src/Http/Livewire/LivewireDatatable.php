@@ -1021,7 +1021,7 @@ class LivewireDatatable extends Component
         $this->setPage(1);
         $this->setSessionStoredFilters();
 
-        $this->dispatch('complex-query')->to('resetQuery');
+        $this->emitTo('complex-query', 'resetQuery');
     }
 
     public function removeBooleanFilter($column)
@@ -1713,7 +1713,7 @@ class LivewireDatatable extends Component
 
     public function render()
     {
-        $this->dispatch('refreshDynamic');
+        $this->emit('refreshDynamic');
 
         if ($this->persistPerPage) {
             session()->put([$this->sessionStorageKey() . '_perpage' => $this->perPage]);
